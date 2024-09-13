@@ -114,41 +114,49 @@ var ComponentGalleryPanel = class _ComponentGalleryPanel {
    * rendered within the webview panel
    */
   _getWebviewContent(webview, extensionUri) {
-    const stylesUri = getUri(webview, extensionUri, ["webview-ui", "build", "assets", "index.css"]);
+    let index = "mainn";
+    const stylesUri = getUri(webview, extensionUri, [
+      "webview-ui",
+      "build",
+      "assets",
+      `${index}.css`
+    ]);
     const codiconFontUri = getUri(webview, extensionUri, [
       "webview-ui",
       "build",
       "assets",
       "codicon.ttf"
     ]);
-    const scriptUri = getUri(webview, extensionUri, ["webview-ui", "build", "assets", "index.js"]);
+    const scriptUri = getUri(webview, extensionUri, [
+      "webview-ui",
+      "build",
+      "views",
+      `${index}.js`
+    ]);
     const nonce = getNonce();
-    return (
-      /*html*/
-      `
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'nonce-${nonce}'; font-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
-          <link rel="stylesheet" type="text/css" href="${stylesUri}">
-          <title>Component Gallery (React)</title>
-          <style nonce="${nonce}">
-            @font-face {
-              font-family: "codicon";
-              font-display: block;
-              src: url("${codiconFontUri}") format("truetype");
-            }
-          </style>
-        </head>
-        <body>
-          <div id="root"></div>
-          <script type="module" nonce="${nonce}" src="${scriptUri}"></script>
-        </body>
-      </html>
-    `
-    );
+    return `
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'nonce-${nonce}'; font-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
+              <link rel="stylesheet" type="text/css" href="${stylesUri}">
+              <title>${index}</title>
+              <style nonce="${nonce}">
+                @font-face {
+                  font-family: "codicon";
+                  font-display: block;
+                  src: url("${codiconFontUri}") format("truetype");
+                }
+              </style>
+            </head>
+            <body>
+              <div id="root"></div>
+              <script type="module" nonce="${nonce}" src="${scriptUri}"></script>
+            </body>
+          </html>
+        `;
   }
 };
 

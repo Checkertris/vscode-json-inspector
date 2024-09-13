@@ -1,23 +1,23 @@
-import { BadgeDemo } from "./demos/BadgeDemo";
-import { ButtonDemo } from "./demos/ButtonDemo";
-import { CheckboxDemo } from "./demos/CheckboxDemo";
-import { DataGridDemo } from "./demos/DataGridDemo";
-import { DividerDemo } from "./demos/DividerDemo";
-import { DropdownDemo } from "./demos/DropdownDemo";
-import { LinkDemo } from "./demos/LinkDemo";
-import { PanelsDemo } from "./demos/PanelsDemo";
-import { ProgressRingDemo } from "./demos/ProgressRingDemo";
-import { RadioGroupDemo } from "./demos/RadioGroupDemo";
-import { TagDemo } from "./demos/TagDemo";
-import { TextAreaDemo } from "./demos/TextAreaDemo";
-import { TextFieldDemo } from "./demos/TextFieldDemo";
+import { BadgeDemo } from "../demos/BadgeDemo";
+import { ButtonDemo } from "../demos/ButtonDemo";
+import { CheckboxDemo } from "../demos/CheckboxDemo";
+import { DataGridDemo } from "../demos/DataGridDemo";
+import { DividerDemo } from "../demos/DividerDemo";
+import { DropdownDemo } from "../demos/DropdownDemo";
+import { LinkDemo } from "../demos/LinkDemo";
+import { PanelsDemo } from "../demos/PanelsDemo";
+import { ProgressRingDemo } from "../demos/ProgressRingDemo";
+import { RadioGroupDemo } from "../demos/RadioGroupDemo";
+import { TagDemo } from "../demos/TagDemo";
+import { TextAreaDemo } from "../demos/TextAreaDemo";
+import { TextFieldDemo } from "../demos/TextFieldDemo";
 import "./App.css";
-import "./codicon.css";
+import "../codicon.css";
 
 function App() {
   return (
     <main>
-      <h1>Webview UI Toolkit TTTTTReact Component Gallery</h1>
+      <h1>Webview UI Toolkit React Component Gallery</h1>
       <section className="component-row">
         <BadgeDemo></BadgeDemo>
         <ButtonDemo></ButtonDemo>

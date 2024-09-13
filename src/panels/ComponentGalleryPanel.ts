@@ -2,6 +2,7 @@ import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn } from "vsco
 import { getUri } from "../utilities/getUri";
 import { getNonce } from "../utilities/getNonce";
 
+
 /**
  * This class manages the state and behavior of ComponentGallery webview panels.
  *
@@ -98,8 +99,14 @@ export class ComponentGalleryPanel {
    * rendered within the webview panel
    */
   private _getWebviewContent(webview: Webview, extensionUri: Uri) {
+    let index = "mainn"
     // The CSS file from the React build output
-    const stylesUri = getUri(webview, extensionUri, ["webview-ui", "build", "assets", "index.css"]);
+    const stylesUri = getUri(webview, extensionUri, [
+      "webview-ui",
+      "build",
+      "assets",
+      `${index}.css`,
+    ]);
     // Codicon font file from the React build output
     const codiconFontUri = getUri(webview, extensionUri, [
       "webview-ui",
@@ -108,33 +115,37 @@ export class ComponentGalleryPanel {
       "codicon.ttf",
     ]);
     // The JS file from the React build output
-    const scriptUri = getUri(webview, extensionUri, ["webview-ui", "build", "assets", "index.js"]);
+    const scriptUri = getUri(webview, extensionUri, [
+      "webview-ui",
+      "build",
+      "views",
+      `${index}.js`,
+    ]);
 
     const nonce = getNonce();
 
-    // Tip: Install the es6-string-html VS Code extension to enable code highlighting below
-    return /*html*/ `
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'nonce-${nonce}'; font-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
-          <link rel="stylesheet" type="text/css" href="${stylesUri}">
-          <title>Component Gallery (React)</title>
-          <style nonce="${nonce}">
-            @font-face {
-              font-family: "codicon";
-              font-display: block;
-              src: url("${codiconFontUri}") format("truetype");
-            }
-          </style>
-        </head>
-        <body>
-          <div id="root"></div>
-          <script type="module" nonce="${nonce}" src="${scriptUri}"></script>
-        </body>
-      </html>
-    `;
+    return `
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'nonce-${nonce}'; font-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
+              <link rel="stylesheet" type="text/css" href="${stylesUri}">
+              <title>${index}</title>
+              <style nonce="${nonce}">
+                @font-face {
+                  font-family: "codicon";
+                  font-display: block;
+                  src: url("${codiconFontUri}") format("truetype");
+                }
+              </style>
+            </head>
+            <body>
+              <div id="root"></div>
+              <script type="module" nonce="${nonce}" src="${scriptUri}"></script>
+            </body>
+          </html>
+        `;
   }
 }

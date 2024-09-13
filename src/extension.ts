@@ -1,7 +1,9 @@
-import { commands, ExtensionContext } from "vscode";
+import { commands, ExtensionContext ,   window} from "vscode";
 import { ComponentGalleryPanel } from "./panels/ComponentGalleryPanel";
 
 export function activate(context: ExtensionContext) {
+
+
   // Create the show gallery command
   const showGalleryCommand = commands.registerCommand("component-gallery-react.showGallery", () => {
     ComponentGalleryPanel.render(context.extensionUri);
