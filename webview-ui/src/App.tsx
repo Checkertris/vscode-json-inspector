@@ -17,7 +17,7 @@ import "./codicon.css";
 function App() {
   return (
     <main>
-      <h1>Webview UI Toolkit React Component Gallery</h1>
+      <h1>Webview UI Toolkit TTTTTReact Component Gallery</h1>
       <section className="component-row">
         <BadgeDemo></BadgeDemo>
         <ButtonDemo></ButtonDemo>
