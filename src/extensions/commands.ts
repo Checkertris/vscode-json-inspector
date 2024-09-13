@@ -1,10 +1,10 @@
 import vscode from "vscode"
-import { ExtensionFeature } from "./extensionFeature"
+import { ExtensionFeatures } from "./extensionFeatures"
 import { Disposer } from "~/disposer"
 
 const ID = "commands"
 
-export class ExstensionCommands extends ExtensionFeature {
+export class Commands extends ExtensionFeatures {
     private static commandListeners: Record<string, (() => void)[]>
 
     static register(

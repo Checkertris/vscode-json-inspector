@@ -1,11 +1,11 @@
 import vscode from "vscode"
 import * as vscodeUtils from "~/vscodeUtils"
 import { CREATE_REF_FOLDER_COMMAND, DEFAULT_IGNORE, REFERENCE_FOLDER_PATH_STATE } from "~/constants"
-import { FileQuickpickItem } from "~/extensionTools/types"
+import * as Extension from "~/extensions"
 
 export async function setRefFolderCommand(context: vscode.ExtensionContext) {
     if (vscode.workspace.workspaceFolders) {
-        let input = vscode.window.createQuickPick<FileQuickpickItem>()
+        let input = vscode.window.createQuickPick<Extension.FileQuickpick>()
         input.placeholder = "Select an existing path to initialise source folder..."
         vscodeUtils
             .readWorkspaceFolders({

@@ -1,6 +1,6 @@
 import { Disposer } from "~/disposer"
 
-export abstract class ExtensionFeature {
+export abstract class ExtensionFeatures {
     private static registerdStates: Record<string, boolean> = {}
 
     protected static tryRegister(subjectId: string, callback: () => Disposer): Disposer {

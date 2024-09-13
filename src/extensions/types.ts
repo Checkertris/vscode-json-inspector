@@ -6,6 +6,6 @@ export interface FileInfo {
     name: string
 }
 
-export type FileQuickpickItem = vscode.QuickPickItem & FileInfo
+export type FileQuickpick = vscode.QuickPickItem & FileInfo
 
 export type AppMessage = { type: "app-ready" }

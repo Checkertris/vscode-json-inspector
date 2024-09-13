@@ -1,7 +1,7 @@
 import vscode from "vscode"
-import { FileInfo, FileQuickpickItem } from "~/extensionTools/types"
+import * as Extension from "~/extensions"
 
-export function fileInfoToQuickpickItems(files: FileInfo[]): FileQuickpickItem[] {
+export function fileInfoToQuickpickItems(files: Extension.FileInfo[]): Extension.FileQuickpick[] {
     let includeWorkspaceFolders = false
     if (vscode.workspace.workspaceFolders)
         if (vscode.workspace.workspaceFolders.length > 1) includeWorkspaceFolders = true

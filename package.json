@@ -12,7 +12,7 @@
             "explorer": [
                 {
                     "type": "webview",
-                    "id": "calicoColors.colorsView",
+                    "id": "extension.mainView",
                     "name": "Calico Colors"
                 }
             ]

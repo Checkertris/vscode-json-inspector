@@ -1,11 +1,11 @@
 import vscode from "vscode"
-import { ExtensionFeature } from "./extensionFeature"
+import { ExtensionFeatures } from "./extensionFeatures"
 import { Disposer } from "~/disposer"
-import { DiagnosticConfigs } from "../diagnostics"
+import { DiagnosticConfigs } from "./diagnostics"
 
 const ID = "diagnostic-collections"
 
-export class ExstensionDiagnostics extends ExtensionFeature {
+export class DiagnosticCollections extends ExtensionFeatures {
     static register(
         context: vscode.ExtensionContext,
         diagnosticCollections: Record<string, DiagnosticConfigs>

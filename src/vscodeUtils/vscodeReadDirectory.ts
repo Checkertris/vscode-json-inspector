@@ -1,5 +1,5 @@
 import vscode from "vscode"
-import { FileInfo } from "~/extensionTools/types"
+import * as Extension from "~/extensions"
 
 interface ReadDirectoryOptions {
     ignore?: string[]
@@ -10,7 +10,7 @@ interface ReadDirectoryOptions {
 export async function readDirectory(
     root: vscode.Uri,
     options?: ReadDirectoryOptions
-): Promise<FileInfo[]> {
+): Promise<Extension.FileInfo[]> {
     let dirs = await vscode.workspace.fs.readDirectory(root)
     let ingnoreRegex: undefined | RegExp = undefined
     let includeRegex: undefined | RegExp = undefined
@@ -49,7 +49,7 @@ export async function readDirectory(
 async function readDirectoryRecursive(
     root: vscode.Uri,
     options: ReadDirectoryOptions
-): Promise<FileInfo[]> {
+): Promise<Extension.FileInfo[]> {
     let dirs = await readDirectory(root, options).then((files) =>
         Promise.all(
             files.map(async (file) => await readDirectory(vscode.Uri.file(file.path), options))
@@ -59,10 +59,10 @@ async function readDirectoryRecursive(
     return [] //su.flatten(dirs)
 }
 
-export async function readWorkspaceFolders(options: ReadDirectoryOptions): Promise<FileInfo[]> {
+export async function readWorkspaceFolders(options: ReadDirectoryOptions): Promise<Extension.FileInfo[]> {
     let folders = vscode.workspace.workspaceFolders
     if (folders) {
-        let roots: FileInfo[] = folders.map((folder) => ({
+        let roots: Extension.FileInfo[] = folders.map((folder) => ({
             type: "rootFolder",
             path: folder.uri.toString(),
             name: folder.name,

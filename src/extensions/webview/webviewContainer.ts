@@ -1,5 +1,5 @@
 import vscode from "vscode"
-import { AppMessage } from "~/extensionTools/types"
+import * as Extension from "~/extensions"
 import * as vscodeUtils from "~/vscodeUtils"
 import { Disposer } from "~/disposer"
 
@@ -7,7 +7,7 @@ function getUri(webview: vscode.Webview, extensionUri: vscode.Uri, pathList: str
     return webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, ...pathList))
 }
 
-export abstract class BaseWebview<
+export abstract class WebviewContainer<
     C extends vscode.WebviewPanel | vscode.WebviewView,
     R extends { type: string; data?: any } = { type: string; data?: any },
     D extends { type: string; data?: any } = { type: string; data?: any },
@@ -32,7 +32,7 @@ export abstract class BaseWebview<
         this.viewContainer.onDidDispose(() => disposer.dispose())
     }
 
-    protected abstract onReceiveAppMessage(message: R | AppMessage): void
+    protected abstract onReceiveAppMessage(message: R | Extension.AppMessage): void
 
     protected abstract onWebviewStart(webviewView: C): Disposer
 

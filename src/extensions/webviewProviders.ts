@@ -1,10 +1,10 @@
 import vscode from "vscode"
-import { ExtensionFeature } from "./extensionFeature"
+import { ExtensionFeatures } from "./extensionFeatures"
 import { Disposer } from "~/disposer"
 
 const ID = "webview-providers"
 
-export class ExstensionWebviewProviders extends ExtensionFeature {
+export class WebviewProviders extends ExtensionFeatures {
     static register(
         context: vscode.ExtensionContext,
         webviewProviders: Record<

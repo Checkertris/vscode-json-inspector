@@ -1,11 +1,12 @@
-import { BaseWebview } from "./baseWebview"
-import vscode from "vscode"
 
-export abstract class BaseWebviewProvider<
+import vscode from "vscode"
+import { WebviewContainer } from "./webviewContainer";
+
+export abstract class WebviewProvider<
         R extends { type: string; data?: any } = { type: string; data?: any },
         D extends { type: string; data?: any } = { type: string; data?: any },
     >
-    extends BaseWebview<vscode.WebviewView, R, D>
+    extends WebviewContainer<vscode.WebviewView, R, D>
     implements vscode.WebviewViewProvider
 {
     public resolveWebviewView(
